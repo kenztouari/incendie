@@ -211,7 +211,7 @@ void remplissage_aleatoire(Case **foret, int i, int j) {
  * Paramètres :
  *   - param1 : Case **foret
  *   - param2 : int i
- *   - param3 : int j
+ *   - param3 : int  j
  *
  * Retour : /
  */
