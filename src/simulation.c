@@ -19,7 +19,7 @@
  *   - param3 : int j
  * Retour : /
  */
-void simulation(Case **foret, int i, int j) {
+void simulation(Case **foret, int i, int j,BITMAP* page, BITMAP* decor)) {
     // coordonnées de position
     int x, y;
 

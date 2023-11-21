@@ -45,7 +45,7 @@ int demander_nb_iterations();
  *   - param5 : int *y
  * Retour : /
  */
-void demander_coordonnees_depart(int i, int j, Case **foret, int *x, int *y);
+void demander_coordonnees_depart(BITMAP * page, BITMAP * decor,int i, int j, Case **foret, int *x, int *y)
 
 /*
  * Description : Cette fonction permet à l'utilisateur de contrôler la propagation du feu entre les différentes étapes.

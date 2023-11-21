@@ -73,7 +73,8 @@ int demander_nb_iterations() {
  *   - param5 : int *y
  * Retour : /
  */
-void demander_coordonnees_depart(int i, int j, Case **foret, int *x, int *y) {
+
+void demander_coordonnees_depart(BITMAP * page, BITMAP * decor,int i, int j, Case **foret, int *x, int *y) {
     do {
         printf ("Choisir la case de depart du feu (x y): ");
         scanf ("%d %d", x, y);

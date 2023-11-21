@@ -19,5 +19,5 @@
  *   - param3 : int j
  * Retour : /
  */
-void simulation(Case **foret, int i, int j);
+void simulation(Case **foret, int i, int j, BITMAP* page, BITMAP* decor);
 #endif //INCENDIE_SIMULATION_H
