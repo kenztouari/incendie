@@ -15,4 +15,6 @@ add_executable(Incendie main.c
         include/global.h
         src/point.c
         include/point.h
+        src/noeud.c
+        include/noeud.h
 )

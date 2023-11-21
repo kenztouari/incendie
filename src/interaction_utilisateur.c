@@ -110,11 +110,12 @@ void commencer_simulation() {
  *   - param3 : int j
  * Retour : /
  */
-void poursuivre_iteration(){
+char poursuivre_iteration(){
     char resp;
     do {
-        printf ("Appuyer sur i pour avancer d'une iteration: ");
+        printf ("Que souhaitez-vous faire ? [i pour poursuivre l'iteration, r pour revenir en arrière]  ");
         scanf ("%c", &resp);
         getchar ();
-    } while (resp != 'i');
+    } while (resp != 'i' && resp!='r');
+    return resp;
 }

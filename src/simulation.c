@@ -7,10 +7,11 @@
  */
 
 #include <printf.h>
-#include "../include/simulation.h"
+
 #include "../include/interaction_utilisateur.h"
 #include "../include/point.h"
-
+#include "../include/noeud.h"
+#include "../include/simulation.h"
 /*
  * Description : Cette fonction permet de réaliser les étapes de la simulation
  * Paramètres :
@@ -19,33 +20,48 @@
  *   - param3 : int j
  * Retour : /
  */
-void simulation(Case **foret, int i, int j) {
+void simulation(Case **foret, int i, int j, struct Noeud *tete) {
     // coordonnées de position
     int x, y;
 
     // récupérer le nombre d'itérations souhaité par l'utilisateur
-    int nb_iteration = demander_nb_iterations ();
+    int nb_iteration = demander_nb_iterations();
 
     // récupérer les coordonées de la case de départ du feu
-    demander_coordonnees_depart (i, j, foret, &x, &y);
+    demander_coordonnees_depart(i, j, foret, &x, &y);
 
     // bruler la case de départ
-    brule_case_depart (foret, i, j, x, y);
+    brule_case_depart(foret, i, j, x, y);
 
     // affichage de la foret après que la première case ait brulé
-    afficher_foret (foret, i, j);
+    afficher_foret(foret, i, j);
 
     commencer_simulation();
 
 
 
     // poursuite de l'itération en fonction de la saisie de l'utilisateur
-    for (int cmp = 0; cmp < nb_iteration-1; cmp++) {
-        poursuivre_iteration();
-        brule_cases_autour (foret, i, j, x, y);
-        afficher_foret (foret, i, j);
-    }
+    for (int cmp = 0; cmp < nb_iteration - 1; cmp++) {
+        char resp = poursuivre_iteration();
+        int etape;
+        if (resp == 'r') {
+            do {
+                printf("entrer l'étape à laquelle vous souhaitez revenir : [nombre >0]");
+                scanf("%d", &etape);
+                getchar();
+            } while (etape < 0);
+            printf(tete);
+            struct Case **foretALaPosition = obtenir_version_foret(tete, etape);
+            afficher_foret(foretALaPosition, i, j);
+        } else {
+            brule_cases_autour(foret, i, j, x, y);
+            afficher_foret(foret, i, j);
+            printf(tete);
+            ajouter_version_foret(&tete, foret);
 
+        }
+
+    }
 }
 
 /*
@@ -110,3 +126,5 @@ int  chemin_le_plus_court(Case **foret, Point start, Point end, int i, int j) {
     }
 
 }
+
+

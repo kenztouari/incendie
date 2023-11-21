@@ -61,6 +61,6 @@ void commencer_simulation();
  *   - param3 : int j
  * Retour : /
  */
-void poursuivre_iteration();
+char poursuivre_iteration();
 
 #endif //INCENDIE_INTERACTION_UTILISATEUR_H

@@ -6,6 +6,8 @@
  * de chemins les plus courts
  */
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wvisibility"
 #ifndef INCENDIE_SIMULATION_H
 #define INCENDIE_SIMULATION_H
 
@@ -17,7 +19,10 @@
  *   - param1 : Case **foret
  *   - param2 : int i
  *   - param3 : int j
+ *   - param 4 : struct Noeud *tete
  * Retour : /
  */
-void simulation(Case **foret, int i, int j);
+void simulation(Case **foret, int i, int j, struct Noeud *tete);
 #endif //INCENDIE_SIMULATION_H
+
+#pragma clang diagnostic pop
