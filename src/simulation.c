@@ -36,14 +36,14 @@ void simulation(Case **foret, int i, int j) {
     afficher_foret (foret, i, j);
 
     commencer_simulation();
-    afficher_foret(foret,i,j);
 
-    // definition des cases à bruler
-    brule_cases_autour (foret, i, j, x, y);
+
 
     // poursuite de l'itération en fonction de la saisie de l'utilisateur
-    for (int cmp = 0; cmp < nb_iteration; cmp++) {
+    for (int cmp = 0; cmp < nb_iteration-1; cmp++) {
         poursuivre_iteration();
+        brule_cases_autour (foret, i, j, x, y);
+        afficher_foret (foret, i, j);
     }
 
 }

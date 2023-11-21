@@ -109,25 +109,15 @@ void brule_cases_autour(Case **foret, int i, int j, int x, int y) {
             int new_y = y + v;
             // Vérifier si les nouvelles coordonnées sont valides
             if (new_x >= 0 && new_x < i && new_y >= 0 && new_y < j) {
-                // Vérifier si la case n'est pas déjà en cendres éteintes et n'est pas de type sol (4) ou eau (6)
-                if (foret[new_x][new_y].type != 8 && foret[new_x][new_y].type != 4 && foret[new_x][new_y].type != 6) {
-                    // Réduire le degré de la case
-                    if (foret[new_x][new_y].deg > 0) {
-                        foret[new_x][new_y].deg--;
-                    }
-                    if (foret[new_x][new_y].deg == 1 ){
-                        foret[new_x][new_y].type = 7;
-                        foret[new_x][new_y].symbole = '-';
-                    }
-                    // Si le degré atteint zéro, la case devient des cendres éteintes
-                    if (foret[new_x][new_y].deg == 0) {
-                        foret[new_x][new_y].type = 8;
-                        foret[new_x][new_y].symbole = '@';
+                // Vérifier si la case n'est pas de type sol (4) ou eau (6)
+                if ( foret[new_x][new_y].type != 4 && foret[new_x][new_y].type != 6 && foret[new_x][new_y].deg > 0) {
+                    foret[new_x][new_y].feu = true;
+                    foret[new_x][new_y].deg--;
+                    changement_type_case(foret,new_x,new_y);
                     }
                 }
             }
         }
-    }
 }
 
 /*
